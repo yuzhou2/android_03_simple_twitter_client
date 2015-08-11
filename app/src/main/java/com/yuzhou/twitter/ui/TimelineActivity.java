@@ -30,28 +30,8 @@ public class TimelineActivity extends ActionBarActivity
         setContentView(R.layout.activity_timeline);
 
         adapter = new TweetAdapter(this, new ArrayList<Tweet>());
-        ListView lvTimeline = (ListView) findViewById(R.id.lvTimeline);
-        lvTimeline.setAdapter(adapter);
-        lvTimeline.setEmptyView(findViewById(R.id.tvEmptyTimeline));
-
-        RestClient client = RestApplication.getRestClient();
-        client.getHomeTimeline(1, new JsonHttpResponseHandler()
-        {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray json)
-            {
-                // Response is automatically parsed into a JSONArray
-                Log.d("DEBUG", "timeline: " + json.toString());
-                List<Tweet> tweets = Tweet.fromJson(json);
-                adapter.addAll(tweets);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable)
-            {
-                super.onFailure(statusCode, headers, responseString, throwable);
-            }
-        });
+        setupTimeline();
+        queryTweets(1);
     }
 
     @Override
@@ -77,4 +57,42 @@ public class TimelineActivity extends ActionBarActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void setupTimeline()
+    {
+        ListView lvTimeline = (ListView) findViewById(R.id.lvTimeline);
+        lvTimeline.setEmptyView(findViewById(R.id.tvEmptyTimeline));
+        lvTimeline.setAdapter(adapter);
+        lvTimeline.setOnScrollListener(new EndlessScrollListener()
+        {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount)
+            {
+                queryTweets(page);
+            }
+        });
+    }
+
+    private void queryTweets(int page)
+    {
+        RestClient client = RestApplication.getRestClient();
+        client.getHomeTimeline(page, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray json)
+            {
+                // Response is automatically parsed into a JSONArray
+                Log.d("DEBUG", "timeline: " + json.toString());
+                List<Tweet> tweets = Tweet.fromJson(json);
+                adapter.addAll(tweets);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable)
+            {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        });
+    }
+
 }
