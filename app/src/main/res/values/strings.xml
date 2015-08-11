@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Simple Twitter Client</string>
+    <string name="login_label">Log in</string>
+    <string name="status_ready">Status: Ready</string>
+    <string name="skip">skip</string>
+    <string name="title_activity_timeline">TimelineActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="no_tweet">No tweet</string>
+
+</resources>
