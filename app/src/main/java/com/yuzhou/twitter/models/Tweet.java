@@ -1,5 +1,7 @@
 package com.yuzhou.twitter.models;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +28,9 @@ public class Tweet
     @Getter @Setter private String text;
     @Getter @Setter private int retweetCount;
     @Getter @Setter private int favoriteCount;
-    @Getter @Setter private User user;
+    @Getter @Setter private User user = new User();
+    @Getter @Setter private Entity entities = new Entity();
+    @Getter @Setter private Entity extendedEntities = new Entity();
 
     // Make sure to always define this constructor with no arguments
     public Tweet()
@@ -42,6 +46,11 @@ public class Tweet
             text = json.getString("text");
             retweetCount = json.getInt("retweet_count");
             favoriteCount = json.getInt("favorite_count");
+            entities = new Entity(json.getJSONObject("entities"));
+
+            if (!json.isNull("extended_entities")) {
+                extendedEntities = new Entity(json.getJSONObject("extended_entities"));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -64,6 +73,7 @@ public class Tweet
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject tweetJson = jsonArray.getJSONObject(i);
+                Log.d("DEBUG", "tweet: " + tweetJson.toString());
                 Tweet tweet = new Tweet(tweetJson);
                 tweets.add(tweet);
             } catch (Exception e) {
@@ -74,4 +84,5 @@ public class Tweet
 
         return tweets;
     }
+
 }

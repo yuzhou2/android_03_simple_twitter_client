@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
             holder.textBody = (TextView) convertView.findViewById(R.id.tweet__tv_text_body);
             holder.retweetCount = (TextView) convertView.findViewById(R.id.tweet__tv_retweet);
             holder.favoriteCount = (TextView) convertView.findViewById(R.id.tweet__tv_favorite);
+            holder.images = (GridView) convertView.findViewById(R.id.tweet__gv_images);
             convertView.setTag(holder);
         }
 
@@ -53,6 +55,13 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
         holder.textBody.setText(tweet.getText());
         holder.retweetCount.setText(String.valueOf(tweet.getRetweetCount()));
         holder.favoriteCount.setText(String.valueOf(tweet.getFavoriteCount()));
+
+        int imageCount = tweet.getExtendedEntities().getMediaList().size();
+        int columnWidth = Math.min(3, imageCount);
+
+        ImageAdapter mediaAdapter = new ImageAdapter(getContext(), tweet.getExtendedEntities().getMediaList());
+        holder.images.setNumColumns(columnWidth);
+        holder.images.setAdapter(mediaAdapter);
 
         return convertView;
     }
@@ -71,6 +80,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
         private TextView textBody;
         private TextView retweetCount;
         private TextView favoriteCount;
+        private GridView images;
     }
 
 }

@@ -49,13 +49,25 @@
         android:layout_below="@+id/tweet__tv_user_name"
         android:text="Text Body"/>
 
+
+    <GridView
+        android:id="@+id/tweet__gv_images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tweet__tv_user_name"
+        android:layout_below="@+id/tweet__tv_text_body"
+        android:gravity="left|top"
+        android:horizontalSpacing="2dp"
+        android:stretchMode="columnWidth">
+    </GridView>
+
     <!-- control bar -->
     <ImageView
         android:id="@+id/tweet__iv_reply"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignLeft="@+id/tweet__tv_user_name"
-        android:layout_below="@+id/tweet__tv_text_body"
+        android:layout_below="@+id/tweet__gv_images"
         android:paddingTop="4dp"
         android:src="@drawable/ic_action_reply_light"/>
 
@@ -64,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tweet__tv_user_name"
-        android:layout_below="@+id/tweet__tv_text_body"
+        android:layout_below="@+id/tweet__gv_images"
         android:layout_marginLeft="80dp"
         android:paddingTop="8dp"
         android:src="@drawable/tw__ic_retweet_light"/>
@@ -73,7 +85,7 @@
         android:id="@+id/tweet__tv_retweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tweet__tv_text_body"
+        android:layout_below="@+id/tweet__gv_images"
         android:layout_marginLeft="4dp"
         android:layout_toRightOf="@+id/tweet__iv_retweet"
         android:paddingTop="4dp"
@@ -84,7 +96,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignLeft="@+id/tweet__tv_user_name"
-        android:layout_below="@+id/tweet__tv_text_body"
+        android:layout_below="@+id/tweet__gv_images"
         android:layout_marginLeft="160dp"
         android:paddingTop="4dp"
         android:src="@drawable/ic_tweet_action_inline_favorite"/>
@@ -93,7 +105,7 @@
         android:id="@+id/tweet__tv_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tweet__tv_text_body"
+        android:layout_below="@+id/tweet__gv_images"
         android:layout_marginLeft="4dp"
         android:layout_toRightOf="@+id/tweet__iv_favorite"
         android:paddingTop="4dp"
