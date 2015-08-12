@@ -37,9 +37,11 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
             holder = new ViewHolder();
             holder.profileImage = (ImageView) convertView.findViewById(R.id.tweet__iv_profile_image);
             holder.userName = (TextView) convertView.findViewById(R.id.tweet__tv_user_name);
-            holder.screenName = (TextView) convertView.findViewById(R.id.tween__tv_screen_name);
-            holder.createTime = (TextView) convertView.findViewById(R.id.tween__tv_create_time);
-            holder.textBody = (TextView) convertView.findViewById(R.id.tween__tv_text_body);
+            holder.screenName = (TextView) convertView.findViewById(R.id.tweet__tv_screen_name);
+            holder.createTime = (TextView) convertView.findViewById(R.id.tweet__tv_create_time);
+            holder.textBody = (TextView) convertView.findViewById(R.id.tweet__tv_text_body);
+            holder.retweetCount = (TextView) convertView.findViewById(R.id.tweet__tv_retweet);
+            holder.favoriteCount = (TextView) convertView.findViewById(R.id.tweet__tv_favorite);
             convertView.setTag(holder);
         }
 
@@ -49,6 +51,8 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
         holder.screenName.setText(tweet.getUser().getQScreenName());
         holder.createTime.setText(getRelativeTime(tweet.getCreateTime()));
         holder.textBody.setText(tweet.getText());
+        holder.retweetCount.setText(String.valueOf(tweet.getRetweetCount()));
+        holder.favoriteCount.setText(String.valueOf(tweet.getFavoriteCount()));
 
         return convertView;
     }
@@ -65,6 +69,8 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
         private TextView screenName;
         private TextView createTime;
         private TextView textBody;
+        private TextView retweetCount;
+        private TextView favoriteCount;
     }
 
 }
