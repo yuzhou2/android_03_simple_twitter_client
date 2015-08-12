@@ -2,6 +2,7 @@ package com.yuzhou.twitter.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -35,7 +36,28 @@ public class TimelineActivity extends ActionBarActivity
 
         setupHomeLogo();
         setupTimeline();
-        queryTweets(1);
+        setupPullToRefresh();
+        queryNewTweets();
+    }
+
+    private void setupPullToRefresh()
+    {
+        final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) findViewById(R.id.timeline__rl_swipe);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
+        {
+            @Override
+            public void onRefresh()
+            {
+                queryNewTweets();
+                swipeLayout.setRefreshing(false);
+            }
+
+        });
+
+        swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 
     @Override
@@ -69,8 +91,7 @@ public class TimelineActivity extends ActionBarActivity
     {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0 && resultCode == RESULT_OK) {
-            adapter.clear();
-            queryTweets(1);
+            queryNewTweets();
         }
     }
 
@@ -96,6 +117,12 @@ public class TimelineActivity extends ActionBarActivity
                 queryTweets(page);
             }
         });
+    }
+
+    private void queryNewTweets()
+    {
+        adapter.clear();
+        queryTweets(1);
     }
 
     private void queryTweets(int page)
