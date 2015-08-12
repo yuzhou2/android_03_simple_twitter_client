@@ -4,7 +4,7 @@
                 android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/ivProfileImage"
+        android:id="@+id/tweet__iv_profile_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
@@ -13,26 +13,27 @@
         android:src="@drawable/ic_launcher"/>
 
     <TextView
-        android:id="@+id/tvUserName"
+        android:id="@+id/tweet__tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_toRightOf="@+id/tweet__iv_profile_image"
         android:text="User Name"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/tween__tv_screen_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignBaseline="@+id/tweet__tv_user_name"
         android:layout_marginLeft="4dp"
-        android:layout_toRightOf="@+id/tvUserName"
+        android:layout_toRightOf="@+id/tweet__tv_user_name"
         android:text="Screen Name"
-        android:textColor="#a0a0a0"/>
+        android:textColor="#a0a0a0"
+        android:textSize="10sp"/>
 
     <TextView
-        android:id="@+id/tvCreateTime"
+        android:id="@+id/tween__tv_create_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -41,19 +42,19 @@
         android:textColor="#a0a0a0"/>
 
     <TextView
-        android:id="@+id/tvTextBody"
+        android:id="@+id/tween__tv_text_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvUserName"
-        android:layout_below="@+id/tvUserName"
+        android:layout_alignLeft="@+id/tweet__tv_user_name"
+        android:layout_below="@+id/tweet__tv_user_name"
         android:text="Text Body"/>
 
     <TextView
-        android:id="@+id/tvLabel"
+        android:id="@+id/tween__tv_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvUserName"
-        android:layout_below="@+id/tvTextBody"
+        android:layout_alignLeft="@+id/tweet__tv_user_name"
+        android:layout_below="@+id/tween__tv_text_body"
         android:text=""/>
 
 </RelativeLayout>

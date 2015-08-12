@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.yuzhou.twitter"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          android:versionCode="1"
-          android:versionName="1.0">
+<manifest
+    package="com.yuzhou.twitter"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="21"/>
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".RestApplication"
+        android:name="com.yuzhou.twitter.RestApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -26,7 +26,7 @@
             android:value="1"/>
 
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="com.yuzhou.twitter.ui.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -46,8 +46,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.TimelineActivity"
-            android:label="@string/title_activity_timeline">
+            android:name="com.yuzhou.twitter.ui.TimelineActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name="com.yuzhou.twitter.ui.ComposeActivity"
+            android:label="@string/title_activity_compose"
+            android:parentActivityName="com.yuzhou.twitter.ui.TimelineActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yuzhou.twitter.ui.TimelineActivity"/>
         </activity>
     </application>
 

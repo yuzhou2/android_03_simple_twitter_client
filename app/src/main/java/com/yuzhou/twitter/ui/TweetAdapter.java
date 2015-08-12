@@ -2,7 +2,6 @@ package com.yuzhou.twitter.ui;
 
 import android.content.Context;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +35,11 @@ public class TweetAdapter extends ArrayAdapter<Tweet>
         } else {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false);
             holder = new ViewHolder();
-            holder.profileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
-            holder.userName = (TextView) convertView.findViewById(R.id.tvUserName);
-            holder.screenName = (TextView) convertView.findViewById(R.id.tvScreenName);
-            holder.createTime = (TextView) convertView.findViewById(R.id.tvCreateTime);
-            holder.textBody = (TextView) convertView.findViewById(R.id.tvTextBody);
+            holder.profileImage = (ImageView) convertView.findViewById(R.id.tweet__iv_profile_image);
+            holder.userName = (TextView) convertView.findViewById(R.id.tweet__tv_user_name);
+            holder.screenName = (TextView) convertView.findViewById(R.id.tween__tv_screen_name);
+            holder.createTime = (TextView) convertView.findViewById(R.id.tween__tv_create_time);
+            holder.textBody = (TextView) convertView.findViewById(R.id.tween__tv_text_body);
             convertView.setTag(holder);
         }
 

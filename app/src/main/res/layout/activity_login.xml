@@ -6,17 +6,17 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".ui.LoginActivity">
+                tools:context="com.yuzhou.twitter.ui.LoginActivity">
 
     <com.yuzhou.twitter.ui.MyTwitterLoginButton
-        android:id="@+id/bnLogin"
+        android:id="@+id/login__bn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
 
     <TextView
-        android:id="@+id/sessionStatus"
+        android:id="@+id/login__session_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -25,7 +25,7 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/tvSkip"
+        android:id="@+id/login__tv_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

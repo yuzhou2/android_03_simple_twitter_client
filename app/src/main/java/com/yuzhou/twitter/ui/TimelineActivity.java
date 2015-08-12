@@ -1,6 +1,8 @@
 package com.yuzhou.twitter.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +32,8 @@ public class TimelineActivity extends ActionBarActivity
         setContentView(R.layout.activity_timeline);
 
         adapter = new TweetAdapter(this, new ArrayList<Tweet>());
+
+        setupHomeLogo();
         setupTimeline();
         queryTweets(1);
     }
@@ -51,17 +55,38 @@ public class TimelineActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_compose) {
+            Intent intent = new Intent(this, ComposeActivity.class);
+            startActivityForResult(intent, 0);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            adapter.clear();
+            queryTweets(1);
+        }
+    }
+
+    private void setupHomeLogo()
+    {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getResources().getString(R.string.title_home));
+        actionBar.setLogo(R.drawable.tw__ic_logo_default);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+    }
+
     private void setupTimeline()
     {
-        ListView lvTimeline = (ListView) findViewById(R.id.lvTimeline);
-        lvTimeline.setEmptyView(findViewById(R.id.tvEmptyTimeline));
+        ListView lvTimeline = (ListView) findViewById(R.id.timeline__lv_list);
+        lvTimeline.setEmptyView(findViewById(R.id.timeline__tv_empty));
         lvTimeline.setAdapter(adapter);
         lvTimeline.setOnScrollListener(new EndlessScrollListener()
         {

@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -9,8 +9,19 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="homeAsUpIndicator">@drawable/ic_action_back</item>
+        <item name="colorPrimaryDark">@color/tw__blue_pressed</item>
+        <item name="colorPrimary">@color/tw__blue_default</item>
+        <item name="android:textColorPrimary">@color/tw__light_gray</item>
+        <item name="android:windowBackground">@color/tw__solid_white</item>
+    </style>
+
+    <style name="AppTheme.EditText" parent="AppTheme">
+        <item name="colorControlNormal">@color/tw__light_gray</item>
+        <item name="colorControlActivated">@color/tw__light_gray</item>
+        <item name="colorControlHighlight">@color/tw__light_gray</item>
     </style>
 
 </resources>

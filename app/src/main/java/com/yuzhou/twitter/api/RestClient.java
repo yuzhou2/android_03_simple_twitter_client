@@ -34,6 +34,13 @@ public class RestClient extends OAuthBaseClient
         super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
     }
 
+    public void getUserCredential(AsyncHttpResponseHandler handler)
+    {
+        String apiUrl = getApiUrl("account/verify_credentials.json");
+        RequestParams params = new RequestParams();
+        getClient().get(apiUrl, params, handler);
+    }
+
     public void getHomeTimeline(int page, AsyncHttpResponseHandler handler)
     {
         String apiUrl = getApiUrl("statuses/home_timeline.json");

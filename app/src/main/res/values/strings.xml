@@ -2,13 +2,24 @@
 <resources>
 
     <string name="app_name">Simple Twitter Client</string>
-    <string name="login_label">Log in</string>
+    <string name="title_home">Home</string>
+    <string name="action_compose">Compose</string>
+
+    <!-- activity_login.xml -->
     <string name="status_ready">Status: Ready</string>
     <string name="skip">skip</string>
-    <string name="title_activity_timeline">TimelineActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <!-- activity_timeline.xml -->
     <string name="no_tweet">No tweet</string>
+    <string name="title_activity_compose">Compose</string>
+
+    <!-- activity_compose.xml -->
+    <string name="compose">Tweet</string>
+    <string name="hint_compose">What\'s happening?</string>
+
+    <!-- error or warning -->
+    <string name="error_unavailable_network">Network is unavailable</string>
+    <string name="error_cannot_tweet">Can not tweet to server</string>
+    <string name="warn_compose_empty_text">What do you want to tweet?</string>
 
 </resources>

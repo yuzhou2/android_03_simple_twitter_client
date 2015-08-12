@@ -42,7 +42,7 @@ public class MyTwitterLoginButton extends Button
         setTextSize(0, (float) res.getDimensionPixelSize(com.twitter.sdk.android.core.R.dimen.tw__login_btn_text_size));
         setTypeface(Typeface.DEFAULT_BOLD);
         setPadding(res.getDimensionPixelSize(com.twitter.sdk.android.core.R.dimen.tw__login_btn_left_padding), 0, res.getDimensionPixelSize(com.twitter.sdk.android.core.R.dimen.tw__login_btn_right_padding), 0);
-        setBackgroundResource(R.drawable.twitter_login_button);
+        setBackgroundResource(R.drawable.blue_button);
 
         if(Build.VERSION.SDK_INT >= 21) {
             setAllCaps(false);

@@ -2,7 +2,7 @@ package com.yuzhou.twitter.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,17 +21,10 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        status = (TextView) findViewById(R.id.sessionStatus);
+        status = (TextView) findViewById(R.id.login__session_status);
 
+        setupHomeLogo();
         setupLoginButton();
-    }
-
-    // Inflate the menu; this adds items to the action bar if it is present.
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_login, menu);
-        return true;
     }
 
     // OAuth authenticated successfully, launch primary authenticated activity
@@ -63,9 +56,18 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient>
         getClient().connect();
     }
 
+    private void setupHomeLogo()
+    {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getResources().getString(R.string.title_home));
+        actionBar.setLogo(R.drawable.tw__ic_logo_default);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+    }
+
     private void setupLoginButton()
     {
-        Button loginButton = (Button) findViewById(R.id.bnLogin);
+        Button loginButton = (Button) findViewById(R.id.login__bn_login);
         loginButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
