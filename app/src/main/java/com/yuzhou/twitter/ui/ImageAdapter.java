@@ -18,14 +18,10 @@ import java.util.List;
  */
 public class ImageAdapter extends ArrayAdapter<Media>
 {
-    private List<Media> mediaList;
-    private int mediaCount;
 
     public ImageAdapter(Context context, List<Media> mediaList)
     {
         super(context, R.layout.item_image, mediaList);
-        this.mediaList = mediaList;
-        this.mediaCount = mediaList.size();
     }
 
     @Override
